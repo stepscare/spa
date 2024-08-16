@@ -10,21 +10,35 @@ interface AuthState {
 
 const useAuthStore = create<AuthState>((set) => ({
   user: (() => {
-    const storedUser = localStorage.getItem('user');
-    return storedUser ? JSON.parse(storedUser) : null;
+    if (typeof window !== 'undefined') {
+      const storedUser = localStorage.getItem('user');
+      return storedUser ? JSON.parse(storedUser) : null;
+    }
+    return null;
   })(),
-  token: localStorage.getItem('token'),
+  token: (() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('token');
+    }
+    return null;
+  })(),
   setUser: (user) => {
-    localStorage.setItem('user', JSON.stringify(user));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
     set({ user });
   },
   setToken: (token) => {
-    localStorage.setItem('token', token || '');
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('token', token || '');
+    }
     set({ token });
   },
   clearUser: () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+    }
     set({ user: null, token: null });
   },
 }));
