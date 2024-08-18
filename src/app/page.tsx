@@ -240,7 +240,7 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.contact}>
           <div> 
-            <Image src="/logo.jpeg" alt=' ' width={150} height={100} />
+            <Image src="/logo.jpeg" alt=' ' width={100} height={100} />
           </div>
           <p style={{fontSize: "1.2em" , marginBottom: "1em"}}>Steps Care Spa</p>
           <a href='https://wa.me/966556474040'> <FaPhoneAlt /> +966556474040</a>
