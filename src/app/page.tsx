@@ -1,6 +1,7 @@
 'use client'
 import axios from 'axios';
 import { setHours, setMinutes } from 'date-fns';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -238,6 +239,9 @@ export default function Home() {
 
       <div className={styles.container}>
         <div className={styles.contact}>
+          <div> 
+            <Image src="/logo.jpeg" alt=' ' width={150} height={100} />
+          </div>
           <p style={{fontSize: "1.2em" , marginBottom: "1em"}}>Steps Care Spa</p>
           <a href='https://wa.me/966556474040'> <FaPhoneAlt /> +966556474040</a>
           <a href='mailto:stepscare23@gmail.com'>stepscare23@gmail.com</a>
